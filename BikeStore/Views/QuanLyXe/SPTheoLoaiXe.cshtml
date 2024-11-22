@@ -1,0 +1,17 @@
+﻿@model IEnumerable<BikeStore.XEGANMAY>
+
+@{
+    ViewBag.Title = "SPTheoLoaiXe";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+
+@foreach (var item in Model)
+{
+    <li>
+        <a href="@Url.Action("Details","QuanLyXe",new {id= item.MaXe})">
+            <img alt="@item.TenXe" src="~/images/@item.Anhbia" />
+            <span>@item.TenXe</span>
+        </a>
+    </li>
+}
+

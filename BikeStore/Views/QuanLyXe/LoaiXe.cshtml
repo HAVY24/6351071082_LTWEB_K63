@@ -1,0 +1,10 @@
+﻿@model IEnumerable<BikeStore.LOAIXE>
+
+@foreach (var item in Model)
+{
+    <div class="activity-list-update">
+        <a href="@Url.Action("SPTheoLoaiXe","QuanLyXe", new {id = item.MaLX })">
+            @item.TenLoaiXe
+        </a>
+    </div>
+}    

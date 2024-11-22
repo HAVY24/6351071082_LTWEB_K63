@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/NguoiDungcssLayout/fonts.css" rel="stylesheet" />
+    <link href="~/Content/NguoiDungcssLayout/screen.css" rel="stylesheet" />
+    <link href="~/Content/NguoiDungcssLayout/NguoiDungCssLayout.css" rel="stylesheet" />
+    <link href="~/Content/fontawesome-free-6.7.1-web/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="~/Content/fontawesome-free-6.7.1-web/css/solid.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div id="ToanTrang">
+        <section class="blank">
+            <div class="flash">
+                <div class="icDienThoai">
+                    <i class="fa-solid fa-phone"></i>
+                    (08)6464232
+                </div>
+                @*TAo Dki Dnhap*@
+                <div class="DangKyDangNhap">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    @Html.ActionLink("Đăng ký", "DangKy", null, htmlAttributes: new { @class = "DangKy" })
+                    <i class="fa-solid fa-unlock"></i>
+                    @Html.ActionLink("Đăng nhập", "Dangnhap", null, htmlAttributes: new { @class = "Dangnhap" })
+                </div>
+
+            </div>
+
+            <div class="flash success" id="divDanhMuc">
+                <div id="txtTimKiem">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.TextBox("txtTimKiem", "", htmlAttributes: new { @class = "textBoxTimKiem", @placeholder = "Nhập vào từ khóa cần tìm..." });
+                        <div id="divHinhAnhTimKiem">
+                            <button type="submit">
+                                <img src="~/images/searchimage.jpg" />
+                            </button>
+                        </div>
+                    }
+                </div>
+                <ul class="navMenu">
+                    <li>
+                        <a href="#"> Trang Chủ</a>
+                    </li>
+                    <li>
+                        <a href="#"> Giới Thiệu</a>
+                    </li>
+                    <li>
+                        <a href="#"> Liên hệ</a>
+                    </li>
+                    <li>
+                        <a href="#"> Hướng dẫn</a>
+                    </li>
+                    <li>
+                        <a href="#"> Xe máy</a>
+                    </li>
+
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <div class="main-layout">
+                <div class="activity">
+                    <h1 class="item-header">Các Loại Xe</h1>
+                    @Html.Action("LoaiXe", "QuanLyXe")
+                    
+                    <h1 class="item-header">Các Nhà Phân Phối</h1>
+                    @Html.Action("NhaPhanPhoi", "QuanLyXe")
+                </div>
+                
+                <div class="content-body">
+                    @RenderBody()
+                </div>
+            </div>
+
+        </section>
+
+        <section>
+            <div>
+                <a href="#" class="button">This is a button</a>
+
+                <a href="#" class="button button-submit">This is a save button</a>
+
+                <a href="#" class="button">Button with a counter <span class="notification">22</span></a>
+
+                <a href="#" class="button button-and-icon">
+                    <div><i class="icon-large icon-cog"></i></div>Button with an icon
+                </a>
+            </div>
+
+            <hr>
+
+            <div>
+                <a href="#" class="button button-submit">Submit</a>
+                <a href="#" class="button button-cancel">Cancel</a>
+                <a href="#" class="button button-delete">Delete</a>
+            </div>
+
+            <hr>
+
+            <div>
+                <a href="#" class="button button-small">Smaller button</a>
+            </div>
+
+            <hr>
+
+        </section>
+
+        <section class="blank items">
+            <div class="item">
+                <img src="http://lorempixel.com/400/300/" alt="Image">
+
+                <div class="item-info">
+                    <h1>Item title</h1>
+                    <p>What the hell is this? Get out of town, I didn't know you did anything creative. Ah, let me read some.</p>
+                    <span class="price">£49.99</span>
+                    <a href="#" class="button button-buy">Get it now</a>
+                </div>
+            </div>
+            <div>
+                <a href="#" class="button button-buy">Buy button (full width for columns)</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
