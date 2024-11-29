@@ -2190,6 +2190,7 @@
     <Content Include="Content\fontawesome-free-6.7.1-web\svgs\solid\yen-sign.svg" />
     <Content Include="Content\fontawesome-free-6.7.1-web\svgs\solid\yin-yang.svg" />
     <Content Include="Content\fontawesome-free-6.7.1-web\svgs\solid\z.svg" />
+    <Content Include="Content\NguoiDungcssLayout\Dangky.css" />
     <Content Include="Content\NguoiDungcssLayout\fonts.css" />
     <Content Include="Content\NguoiDungcssLayout\NguoiDungCssLayout.css" />
     <Content Include="Content\NguoiDungcssLayout\screen.css" />
@@ -2248,7 +2249,9 @@
     <Compile Include="CHITIETDONTHANG.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NguoiDungController.cs" />
     <Compile Include="Controllers\QuanLyXeController.cs" />
     <Compile Include="DONDATHANG.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -2280,6 +2283,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Giohang.cs" />
     <Compile Include="NHAPHANPHOI.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -2362,6 +2366,13 @@
     <Content Include="Views\QuanLyXe\NhaPhanPhoi.cshtml" />
     <Content Include="Views\QuanLyXe\Index.cshtml" />
     <Content Include="Views\QuanLyXe\Details.cshtml" />
+    <Content Include="Views\NguoiDung\Dangky.cshtml" />
+    <Content Include="Views\NguoiDung\Dangnhap.cshtml" />
+    <Content Include="Views\NguoiDung\Index.cshtml" />
+    <Content Include="Views\GioHang\Giohang.cshtml" />
+    <Content Include="Views\GioHang\GiohangPartial.cshtml" />
+    <Content Include="Views\GioHang\DatHang.cshtml" />
+    <Content Include="Views\GioHang\Xacnhandonhang.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2371,7 +2382,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

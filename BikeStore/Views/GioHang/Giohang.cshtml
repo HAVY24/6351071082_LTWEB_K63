@@ -1,0 +1,186 @@
+﻿@using BikeStore.Models
+@model List<Giohang>
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+
+<style>
+    /* Giỏ hàng: Bố cục */
+    h2 {
+        font-size: 2rem;
+        color: #4CAF50;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+    }
+
+        .table thead tr {
+            background-color: #4CAF50;
+            color: white;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .table th, .table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .table img {
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 80px;
+            height: auto;
+        }
+
+    .actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        font-size: 14px;
+        font-weight: bold;
+        color: white;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+    .btn-danger {
+        background-color: #f44336;
+    }
+
+        .btn-danger:hover {
+            background-color: #e53935;
+        }
+
+    .summary {
+        text-align: right;
+        font-size: 1.2rem;
+        margin-top: 20px;
+    }
+
+    /* Cải thiện hiển thị cho nút cập nhật số lượng */
+    .update-quantity-form input {
+        width: 60px;
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    .update-quantity-form button {
+        padding: 8px 12px;
+    }
+
+    .Dathang {
+        margin-top: 80px;
+        width: 100px;
+        padding: 10px 15px;
+        font-size: 14px;
+        font-weight: bold;
+        color: white;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .Dathang {
+        margin-top: 80px;
+        display: flex;
+        justify-content: center; /* Căn giữa theo chiều ngang */
+        align-items: center; /* Căn giữa theo chiều dọc */
+        width: 100%;
+    }
+
+        .Dathang .dh {
+            text-align: center; /* Đảm bảo nội dung trong div con cũng căn giữa */
+        }
+
+        .Dathang .btn {
+            width: auto;
+            padding: 10px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .Dathang .btn:hover {
+                background-color: #45a049;
+                color:yellow;
+            }
+</style>
+
+<h2>Giỏ hàng của bạn</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Hình ảnh</th>
+            <th>Tên sản phẩm</th>
+            <th>Đơn giá</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><img src="@Url.Content("~/images/" + item.sAnhbia)" alt="@item.sTenXe" /></td>
+                <td>@item.sTenXe</td>
+                <td>@String.Format("{0:0,0} VND", item.dDongia)</td>
+                <td>@item.iSoluong</td>
+                <td>@String.Format("{0:0,0} VND", item.dThanhtien)</td>
+                <td class="actions">
+                    <!-- Liên kết Chi tiết -->
+                    <a href="@Url.Action("Details", "QuanLyXe", new { id = item.iMaXe })" class="btn">Chi tiết</a>
+
+                    <!-- Liên kết Xóa -->
+                    <a href="@Url.Action("XoaGiohang", "GioHang", new { maXe = item.iMaXe })" class="btn btn-danger">Xóa</a>
+
+                    <!-- Form cập nhật số lượng -->
+                    <form action="@Url.Action("CapnhatGioHang", "GioHang", new { iMaXe = item.iMaXe })" method="post" class="update-quantity-form" style="display: inline;">
+                        <input type="number" name="txtSoluong" value="@item.iSoluong" min="1" class="form-control" />
+                        <button type="submit" class="btn">Cập nhật</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="summary">
+    <p><strong>Tổng số lượng:</strong> @ViewBag.TongSoLuong</p>
+    <p><strong>Tổng tiền:</strong> @String.Format("{0:0,0} VND", ViewBag.TongTien)</p>
+    <a href="@Url.Action("Index", "Home")" class="btn">Tiếp tục mua sắm</a>
+    <a href="@Url.Action("XoaTatcaGiohang", "GioHang")" class="btn btn-danger">Xóa giỏ hàng</a>
+</div>
+
+<!-- Nút Đặt hàng -->
+<div class="Dathang">
+    <p class="dh">
+        @Html.ActionLink("ĐẶT HÀNG", "Dathang", "Giohang", null, new { @class = "btn" })
+    </p>
+</div>

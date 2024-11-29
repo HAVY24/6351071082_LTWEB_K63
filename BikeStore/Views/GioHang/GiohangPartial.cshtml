@@ -1,0 +1,8 @@
+﻿@{
+    var tongSoLuong = ViewBag.TongSoLuong ?? 0;
+}
+
+<a href="@Url.Action("Giohang", "GioHang")" style="color: white; text-decoration: none;">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span>Giỏ hàng (@tongSoLuong sản phẩm)</span>
+</a>

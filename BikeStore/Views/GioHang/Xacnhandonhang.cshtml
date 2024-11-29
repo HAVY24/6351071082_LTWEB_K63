@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Xacnhandonhang";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+
+<style>
+    /* Styling for the content */
+    .confirmation-message {
+        text-align: center;
+        margin-top: 50px;
+        padding: 20px;
+        background-color: #f4f4f9;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+        .confirmation-message h2 {
+            font-size: 24px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .confirmation-message p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .confirmation-message a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+            .confirmation-message a:hover {
+                background-color: #45a049;
+            }
+</style>
+
+<div class="confirmation-message">
+    <h2>Đơn hàng của quý khách đã được chúng tôi ghi nhận.</h2>
+    <p>Chúng tôi sẽ liên hệ quý khách trong thời gian sớm nhất và giao hàng đúng hẹn.</p>
+    <p>
+        <a href="https://localhost:44333/NguoiDung/Index">Về Trang Chủ</a>
+    </p>
+</div>

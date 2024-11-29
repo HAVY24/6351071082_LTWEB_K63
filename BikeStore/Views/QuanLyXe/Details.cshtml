@@ -1,37 +1,108 @@
 ﻿@model BikeStore.XEGANMAY
-    <style type="text/css">
-        #Datmua a{
-            clear :both; background-color: red;
-            color:white; width: 120px; height: 35px;
-            display:block; float:right; text-align: center;
-            padding-top: 10px; text-decoration: none; font-weight: bold;
-        }
-        #Datmua a:hover{
-            background-color:gray;
-            color:red;
-        }
-    </style>
+<style type="text/css">
+    /* Styling the container for product details */
+    .product-details {
+        display: flex;
+        margin: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Left section with image */
+    .product-details .image-container {
+        width: 40%;
+        padding: 10px;
+        border-right: 1px dotted #ddd;
+    }
+
+    .product-details .image-container img {
+        width: 100%;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    /* Right section with product details */
+    .product-details .details-container {
+        width: 60%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    /* Product name */
+    .product-details .product-name {
+        font-size: 24px;
+        font-weight: bold;
+        color: #e74c3c;
+        margin-bottom: 10px;
+    }
+
+    /* Product description */
+    .product-details .product-description {
+        font-size: 16px;
+        color: #555;
+        text-align: justify;
+        margin-bottom: 15px;
+    }
+
+    /* Product price */
+    .product-details .product-price {
+        font-size: 18px;
+        font-weight: bold;
+        color: #e74c3c;
+        margin-bottom: 20px;
+    }
+
+    /* Add to cart button */
+    #Datmua a {
+        background-color: #2ecc71;
+        color: white;
+        width: 180px;
+        height: 45px;
+        display: block;
+        text-align: center;
+        line-height: 45px;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-top: 20px;
+    }
+
+    #Datmua a:hover {
+        background-color: #27ae60;
+        transform: translateY(-5px);
+    }
+
+</style>
+
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
 }
 
-<h3>THÔNG TIN CHI TIẾT XE </h3>
-<div>
-    <div style="width:40%; float:left; border-left: dotted 1px; border-color:azure">
-        <img src="~/images/@Model.Anhbia" width="100%"/>
+<h3 style="text-align: center; font-size: 28px; color: #333; font-weight: bold;">THÔNG TIN CHI TIẾT XE</h3>
+
+<div class="product-details">
+    <!-- Image section -->
+    <div class="image-container">
+        <img src="~/images/@Model.Anhbia" alt="@Model.TenXe" />
     </div>
-    <div style="width:60%; float:left; padding:10px">
-        <h4 style="font-weight:bold; color:red; ">Tên xe: @Model.TenXe</h4>
-        <p style="text-align:justify"><span style="font-weight:bold">Mô tả: </span>@Model.Mota</p>
-        <p style="font-weight:bold">Giá bán: <span style="color:red; font-size:16px">@Model.Giaban VND</span></p>
-    </div>
-    <div>
+
+    <!-- Product details section -->
+    <div class="details-container">
+        <h4 class="product-name">@Model.TenXe</h4>
+        <p class="product-description"><span style="font-weight: bold;">Mô tả: </span>@Model.Mota</p>
+        <p class="product-price">Giá bán: <span>@Model.Giaban VND</span></p>
+
         <div id="Datmua">
-            <a href="@Url.Action("AddToCard", "ShoppingCard", new {id=@Model.MaXe})" class="list-group-item">
+            <a href="@Url.Action("Themgiohang", "Giohang", new {@iMaXe = @Model.MaXe, @strURL = Request.Url.ToString() })">
                 ĐẶT MUA
             </a>
         </div>
     </div>
 </div>
-

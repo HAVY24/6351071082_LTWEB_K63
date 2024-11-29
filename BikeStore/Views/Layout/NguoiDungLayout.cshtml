@@ -21,12 +21,12 @@
                     (08)6464232
                 </div>
                 @*TAo Dki Dnhap*@
-                <div class="DangKyDangNhap">
-                    <i class="fa-solid fa-right-to-bracket"></i>
-                    @Html.ActionLink("Đăng ký", "DangKy", null, htmlAttributes: new { @class = "DangKy" })
-                    <i class="fa-solid fa-unlock"></i>
-                    @Html.ActionLink("Đăng nhập", "Dangnhap", null, htmlAttributes: new { @class = "Dangnhap" })
-                </div>
+            <div class="DangKyDangNhap">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                @Html.ActionLink("Đăng ký", "DangKy", "NguoiDung", null, htmlAttributes: new { @class = "DangKy" })
+                <i class="fa-solid fa-unlock"></i>
+                @Html.ActionLink("Đăng nhập", "Dangnhap", "NguoiDung", null, htmlAttributes: new { @class = "Dangnhap" })
+            </div>
 
             </div>
 
@@ -44,10 +44,11 @@
                 </div>
                 <ul class="navMenu">
                     <li>
-                        <a href="#"> Trang Chủ</a>
+                       
+                        <a href="https://localhost:44333/NguoiDung/Index">Trang Chủ</a>
                     </li>
-                    <li>
-                        <a href="#"> Giới Thiệu</a>
+                    <li>                       
+                        @Html.Action("GiohangPartial", "GioHang")                                          
                     </li>
                     <li>
                         <a href="#"> Liên hệ</a>
