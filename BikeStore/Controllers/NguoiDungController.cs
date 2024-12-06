@@ -81,6 +81,7 @@ namespace BikeStore.Controllers
         {
             var tendn = collection["TenDN"];
             var matkhau = collection["Matkhau"];
+
             if (String.IsNullOrEmpty(tendn))
             {
                 ViewData["Loi1"] = "Tên đăng nhập không được để trống";
@@ -91,20 +92,36 @@ namespace BikeStore.Controllers
             }
             else
             {
-                var kh = db.KHACHHANGs.SingleOrDefault(x => x.Taikhoan == tendn && x.Matkhau == matkhau);
+                // Kiểm tra tài khoản khách hàng
+                KHACHHANG kh = db.KHACHHANGs.SingleOrDefault(x => x.Taikhoan == tendn && x.Matkhau == matkhau);
                 if (kh != null)
                 {
                     Session["Taikhoan"] = kh;
                     ViewBag.Thongbao = "Chúc mừng đăng nhập thành công";
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "NguoiDung");
                 }
-                else
+
+                // Kiểm tra tài khoản admin
+                Admin ad = db.Admins.SingleOrDefault(n => n.UserAdmin == tendn && n.PassAdmin == matkhau);
+                if (ad != null)
                 {
-                    ViewBag.Thongbao = "Tên đăng nhập hoặc mật khẩu không đúng";
+                    Session["Taikhoanadmin"] = ad;
+                    return RedirectToAction("Index", "Admin");
                 }
+
+                ViewBag.Thongbao = "Tên đăng nhập hoặc mật khẩu không đúng";
             }
             return View();
         }
+        public ActionResult Logout()
+        {
+            // Xóa Session tài khoản admin
+            Session["Taikhoanadmin"] = null;
+
+            // Chuyển hướng về trang Index của NguoiDung
+            return RedirectToAction("Login", "Admin");
+        }
+
     }
-   
+
 }

@@ -1,0 +1,171 @@
+﻿@model BikeStore.XEGANMAY
+
+@{
+    ViewBag.Title = "Chitietxe";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chitietxe</h2>
+
+<div>
+    <h4>XEGANMAY</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaXe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaXe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenXe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenXe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Giaban)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Giaban)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Anhbia)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/images/"+ Model.Anhbia)" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngaycapnhat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaycapnhat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soluongton)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soluongton)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaLX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaLX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaNPP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaNPP)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Suaxe", new {  id = Model.MaXe }) |
+    @Html.ActionLink("Trở về", "Index")
+</p>
+<style>
+
+
+    /* Tiêu đề chính */
+    h2 {
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    /* Tiêu đề trong container */
+    h4 {
+        text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #555;
+    }
+
+    hr {
+        border: 0;
+        height: 1px;
+        background: #ddd;
+        margin: 20px 0;
+    }
+
+    /* Danh sách chi tiết */
+    .dl-horizontal dt {
+        font-weight: bold;
+        color: #555;
+        width: 200px; /* Độ rộng cho phần tiêu đề */
+        float: left;
+        clear: left;
+        text-align: right;
+        margin-right: 20px;
+    }
+
+    .dl-horizontal dd {
+        margin-left: 220px; /* Khoảng cách để phù hợp với dt */
+        margin-bottom: 10px;
+        color: #333;
+        font-size: 15px;
+    }
+
+        /* Ảnh đại diện */
+        .dl-horizontal dd img {
+            max-width: 100%; /* Đảm bảo ảnh không vượt quá kích thước container */
+            height: auto;
+            border-radius: 8px; /* Bo góc ảnh */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Đổ bóng cho ảnh */
+        }
+
+    /* Các liên kết */
+    p a {
+        display: inline-block;
+        margin: 5px;
+        padding: 8px 15px;
+        font-size: 14px;
+        color: #fff;
+        background: #007bff; /* Màu xanh chủ đạo */
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+        p a:hover {
+            background: #0056b3; /* Màu khi hover */
+        }
+
+        /* Liên kết "Back to List" */
+        p a:last-child {
+            background: #6c757d; /* Màu xám */
+        }
+
+            p a:last-child:hover {
+                background: #5a6268; /* Màu khi hover */
+            }
+</style>

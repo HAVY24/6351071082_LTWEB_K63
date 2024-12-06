@@ -1,0 +1,180 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #6a11cb, #2575fc);
+            min-height: 100vh; /* Sử dụng min-height thay vì height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .register-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+            .register-container h1 {
+                margin-bottom: 30px;
+                color: #333;
+                font-size: 30px;
+                font-weight: bold;
+            }
+
+            .register-container h4 {
+                color: red;
+                font-size: 13px;
+                margin-bottom: 10px;
+            }
+
+            .register-container .form-group {
+                margin-bottom: 20px;
+                text-align: left;
+            }
+
+            .register-container label {
+                display: block;
+                font-size: 14px;
+                color: #666;
+                margin-bottom: 5px;
+            }
+
+            .register-container input[type="text"],
+            .register-container input[type="password"],
+            .register-container input[type="email"],
+            .register-container input[type="tel"],
+            .register-container input[type="date"] {
+                width: 100%;
+                padding: 12px;
+                font-size: 14px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                margin-bottom: 10px;
+                transition: border-color 0.3s;
+            }
+
+                .register-container input[type="text"]:focus,
+                .register-container input[type="password"]:focus,
+                .register-container input[type="email"]:focus,
+                .register-container input[type="tel"]:focus,
+                .register-container input[type="date"]:focus {
+                    border-color: #6a11cb;
+                    outline: none;
+                    box-shadow: 0 0 8px rgba(106, 17, 203, 0.5);
+                }
+
+            .register-container button {
+                background: #6a11cb;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                padding: 12px 20px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                width: 100%;
+                margin-top: 10px;
+            }
+
+                .register-container button:hover {
+                    background: #2575fc;
+                }
+
+            .register-container .login-link {
+                margin-top: 20px;
+                font-size: 14px;
+            }
+
+                .register-container .login-link a {
+                    color: #6a11cb;
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+
+                    .register-container .login-link a:hover {
+                        text-decoration: underline;
+                    }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <!-- Chữ "Đăng ký" ở trên cùng -->
+        <h1>Đăng ký</h1>
+
+        <!-- Hiển thị thông báo nếu có -->
+        <h4>@ViewBag.Thongbao</h4>
+
+        <!-- Form đăng ký -->
+        @using (Html.BeginForm("Dangky", "Admin", FormMethod.Post))
+        {
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                <label for="HotenKH">Họ tên khách hàng</label>
+                <input type="text" id="HotenKH" name="HotenKH" placeholder="Nhập họ và tên" value="@Request.Form["HotenKH"]" />
+            </div>
+
+            <div class="form-group">
+                <label for="TenDN">Tên đăng nhập</label>
+                <input type="text" id="TenDN" name="TenDN" placeholder="Nhập tên đăng nhập" value="@Request.Form["TenDN"]" />
+            </div>
+
+            <div class="form-group">
+                <label for="Matkhau">Mật khẩu</label>
+                <input type="password" id="Matkhau" name="Matkhau" placeholder="Nhập mật khẩu" />
+            </div>
+
+            <div class="form-group">
+                <label for="Matkhaunhaplai">Nhập lại mật khẩu</label>
+                <input type="password" id="Matkhaunhaplai" name="Matkhaunhaplai" placeholder="Nhập lại mật khẩu" />
+            </div>
+
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input type="email" id="Email" name="Email" placeholder="Nhập email" value="@Request.Form["Email"]" />
+            </div>
+
+            <div class="form-group">
+                <label for="Dienthoai">Điện thoại</label>
+                <input type="tel" id="Dienthoai" name="Dienthoai" placeholder="Nhập số điện thoại" value="@Request.Form["Dienthoai"]" />
+            </div>
+
+            <div class="form-group">
+                <label for="Diachi">Địa chỉ</label>
+                <input type="text" id="Diachi" name="Diachi" placeholder="Nhập địa chỉ" value="@Request.Form["Diachi"]" />
+            </div>
+
+            <div class="form-group">
+                <label for="Ngaysinh">Ngày sinh</label>
+                <input type="date" id="Ngaysinh" name="Ngaysinh" value="@Request.Form["Ngaysinh"]" />
+            </div>
+
+            <button type="submit">Đăng ký</button>
+        }
+
+        <div class="login-link">
+            <p>Đã có tài khoản? <a href="@Url.Action("Login", "Admin")">Đăng nhập ngay</a></p>
+        </div>
+    </div>
+</body>
+</html>

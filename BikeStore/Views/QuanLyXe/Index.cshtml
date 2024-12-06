@@ -1,4 +1,7 @@
-﻿@model IEnumerable<BikeStore.XEGANMAY>
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<BikeStore.XEGANMAY>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
@@ -8,10 +11,114 @@
     @foreach (var item in Model)
     {
         <li>
-            <a href="@Url.Action("Details","QuanLyXe",new {id= item.MaXe})">
-                <img alt="@item.TenXe" src="~/images/@item.Anhbia" />
+            <a href="@Url.Action("Details", "QuanLyXe", new { id = item.MaXe })">
+                <img alt="@item.TenXe" src="~/images/@(item.Anhbia ?? "no-image.jpg")" />
                 <span>@item.TenXe</span>
             </a>
         </li>
     }
 </div>
+Trang @(Model.PageCount<Model.PageNumber?0: Model.PageNumber)/@Model.PageCount
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
+
+<style>
+    /* Thiết lập nền và font chữ */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Container chứa danh sách xe */
+    .row {
+        display: flex; /* Sử dụng Flexbox */
+        flex-wrap: wrap; /* Đảm bảo mục xuống dòng nếu không đủ chỗ */
+        justify-content: center; /* Căn giữa các mục */
+        list-style: none; /* Loại bỏ dấu chấm danh sách */
+        margin: 20px 0;
+        padding: 0;
+    }
+
+        /* Các mục xe */
+        .row li {
+            display: flex; /* Dùng flex để căn giữa nội dung */
+            flex-direction: column; /* Xếp nội dung theo chiều dọc */
+            align-items: center; /* Căn giữa nội dung */
+            margin: 10px;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 200px; /* Độ rộng cố định */
+            height: 300px; /* Độ cao cố định */
+            text-align: center;
+            box-sizing: border-box; /* Bao gồm padding và border */
+        }
+
+            /* Hình ảnh sản phẩm */
+            .row li img {
+                width: 100%; /* Chiếm toàn bộ chiều ngang của thẻ */
+                height: 150px; /* Chiều cao cố định */
+                object-fit: cover; /* Cắt ảnh vừa khung mà không bị méo */
+                border-radius: 8px; /* Bo góc ảnh */
+                margin-bottom: 10px; /* Khoảng cách giữa ảnh và chữ */
+            }
+
+            /* Tên sản phẩm */
+            .row li span {
+                font-size: 16px;
+                font-weight: bold;
+                color: #333;
+                text-align: center; /* Căn giữa chữ */
+                line-height: 1.5; /* Khoảng cách dòng */
+                overflow: hidden; /* Cắt chữ nếu quá dài */
+                text-overflow: ellipsis; /* Thêm "..." nếu chữ vượt khung */
+                white-space: nowrap; /* Không xuống dòng */
+            }
+
+    /* Thanh phân trang */
+    .MenuTrang {
+        text-align: center; /* Căn giữa thanh phân trang */
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+        .MenuTrang ul {
+            list-style: none; /* Loại bỏ các dấu gạch đầu dòng */
+            padding: 0;
+            margin: 0;
+            display: inline-block; /* Căn giữa danh sách */
+        }
+
+        .MenuTrang li {
+            display: inline-block;
+            margin: 0 5px; /* Khoảng cách giữa các mục phân trang */
+        }
+
+        .MenuTrang a {
+            display: block;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: #007bff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .MenuTrang a:hover {
+                background-color: #007bff;
+                color: #fff;
+            }
+
+        .MenuTrang .active a {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+            pointer-events: none;
+        }
+</style>

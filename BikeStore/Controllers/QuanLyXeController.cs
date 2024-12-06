@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using PagedList;
+using PagedList.Mvc;
+
 namespace BikeStore.Controllers
 {
     public class QuanLyXeController : Controller
@@ -14,11 +17,15 @@ namespace BikeStore.Controllers
         {
             return db.XEGANMAYs.OrderByDescending(a => a.Ngaycapnhat).Take(count).ToList();
         }
-        public ActionResult Index()
+        public ActionResult Index(int ? page)
         {
-            var data  = db.XEGANMAYs.ToList().Take(5);
-            
-            return View(data);
+            int pageSize = 5;
+            int pageNum = (page ?? 1);
+
+            var data = Layxemoi(20);
+
+
+            return View(data.ToPagedList(pageNum,pageSize));
         }
         public ActionResult LoaiXe()
         {

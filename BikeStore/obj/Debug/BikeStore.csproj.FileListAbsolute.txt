@@ -72,3 +72,7 @@ E:\Workspace\Csharp\thuc hanh buoi 1\WebQLXeMay\BikeStore\BikeStore\obj\Debug\Bi
 E:\Workspace\Csharp\thuc hanh buoi 1\WebQLXeMay\BikeStore\BikeStore\obj\Debug\BikeStore.pdb
 E:\Workspace\Csharp\thuc hanh buoi 1\WebQLXeMay\BikeStore\BikeStore\bin\EntityFramework.dll
 E:\Workspace\Csharp\thuc hanh buoi 1\WebQLXeMay\BikeStore\BikeStore\bin\EntityFramework.xml
+E:\Workspace\Csharp\thuc hanh buoi 1\WebQLXeMay\BikeStore\BikeStore\bin\PagedList.dll
+E:\Workspace\Csharp\thuc hanh buoi 1\WebQLXeMay\BikeStore\BikeStore\bin\PagedList.Mvc.dll
+E:\Workspace\Csharp\thuc hanh buoi 1\WebQLXeMay\BikeStore\BikeStore\bin\PagedList.xml
+E:\Workspace\Csharp\thuc hanh buoi 1\WebQLXeMay\BikeStore\BikeStore\bin\PagedList.Mvc.xml

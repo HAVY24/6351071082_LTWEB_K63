@@ -1,0 +1,126 @@
+﻿@using BikeStore.Models
+@using PagedList.Mvc;
+@model PagedList.IPagedList<BikeStore.XEGANMAY>
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+
+@{
+    ViewBag.Title = "Xeganmay";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>QUẢN LÝ XE GẮN MÁY</h2>
+
+<p>
+    @Html.ActionLink("THÊM MỚI", "ThemmoiXe")
+</p>
+<table class="table">
+    <tr>
+        <th style="width: 200px"> Tên xe </th>
+        <th style="width: 100px"> Giá bán </th>
+        <th style="width:300px"> Mô tả </th>
+        <th style="width:120px"> Ảnh bìa </th>
+        <th style="width:150px"> Ngày cập nhật </th>
+        <th style="width: 120px"> SL. Tồn </th>
+        <th style="width:120px"> Loại xe </th>
+        <th style="width: 100px"> Tên NPP </th>
+        <th style="width:200px"> Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenXe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Giaban)
+            </td>
+            <td>
+                @Truncate(item.Mota,100)
+            </td>
+            <td>
+                <img src="@Url.Content("~/images/"+ item.Anhbia)" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaycapnhat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soluongton)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LOAIXE.TenLoaiXe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NHAPHANPHOI.TenNPP)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Suaxe", new {  id=item.MaXe }) |
+                @Html.ActionLink("Chi Tiết", "Chitietxe", new { id = item.MaXe }) |
+                @Html.ActionLink("Xóa", "Xoaxe", new { id = item.MaXe })
+            </td>
+        </tr>
+    }
+
+</table>
+Trang @(Model.PageCount<Model.PageNumber?0: Model.PageNumber)/@Model.PageCount
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Xeganmay", new { page = page }))
+</div>
+<style>
+    .MenuTrang {
+        text-align: center; /* Căn giữa thanh phân trang */
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+        .MenuTrang ul {
+            list-style: none; /* Loại bỏ các dấu gạch đầu dòng */
+            padding: 0;
+            margin: 0;
+            display: inline-block; /* Căn giữa danh sách */
+        }
+
+        .MenuTrang li {
+            display: inline-block;
+            margin: 0 5px; /* Khoảng cách giữa các mục phân trang */
+        }
+
+        .MenuTrang a {
+            display: block;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: #007bff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .MenuTrang a:hover {
+                background-color: #007bff;
+                color: #fff;
+            }
+
+        .MenuTrang .active a {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+            pointer-events: none;
+        }
+
+    .table img {
+        max-width: 100px; /* Đặt chiều rộng tối đa cho hình ảnh */
+        max-height: 100px; /* Đặt chiều cao tối đa cho hình ảnh */
+        object-fit: cover; /* Đảm bảo hình ảnh được cắt gọn nếu cần mà không bị méo */
+        border-radius: 4px; /* Bo tròn góc nếu cần (tuỳ chỉnh) */
+</style>

@@ -33,5 +33,6 @@ namespace BikeStore
         public DbSet<NHAPHANPHOI> NHAPHANPHOIs { get; set; }
         public DbSet<SANXUATXE> SANXUATXEs { get; set; }
         public DbSet<XEGANMAY> XEGANMAYs { get; set; }
+        public DbSet<Admin> Admins { get; set; }
     }
 }

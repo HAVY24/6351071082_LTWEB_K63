@@ -23,9 +23,7 @@
                 @*TAo Dki Dnhap*@
             <div class="DangKyDangNhap">
                 <i class="fa-solid fa-right-to-bracket"></i>
-                @Html.ActionLink("Đăng ký", "DangKy", "NguoiDung", null, htmlAttributes: new { @class = "DangKy" })
-                <i class="fa-solid fa-unlock"></i>
-                @Html.ActionLink("Đăng nhập", "Dangnhap", "NguoiDung", null, htmlAttributes: new { @class = "Dangnhap" })
+                <a class="nav-link" href="@Url.Action("Logout", "Admin")">Logout</a>
             </div>
 
             </div>
@@ -44,8 +42,8 @@
                 </div>
                 <ul class="navMenu">
                     <li>
-                       
-                        <a href="https://localhost:44333/NguoiDung/Index">Trang Chủ</a>
+
+                        @Html.ActionLink("Trang chủ", "Index", "NguoiDung", null, new { @class = "nav-link" })
                     </li>
                     <li>                       
                         @Html.Action("GiohangPartial", "GioHang")                                          
@@ -57,7 +55,7 @@
                         <a href="#"> Hướng dẫn</a>
                     </li>
                     <li>
-                        <a href="#"> Xe máy</a>
+                        @Html.ActionLink("Xe máy", "Index", "QuanLyXe", null, new { @class = "nav-link" })
                     </li>
 
                 </ul>
@@ -80,53 +78,6 @@
             </div>
 
         </section>
-
-        <section>
-            <div>
-                <a href="#" class="button">This is a button</a>
-
-                <a href="#" class="button button-submit">This is a save button</a>
-
-                <a href="#" class="button">Button with a counter <span class="notification">22</span></a>
-
-                <a href="#" class="button button-and-icon">
-                    <div><i class="icon-large icon-cog"></i></div>Button with an icon
-                </a>
-            </div>
-
-            <hr>
-
-            <div>
-                <a href="#" class="button button-submit">Submit</a>
-                <a href="#" class="button button-cancel">Cancel</a>
-                <a href="#" class="button button-delete">Delete</a>
-            </div>
-
-            <hr>
-
-            <div>
-                <a href="#" class="button button-small">Smaller button</a>
-            </div>
-
-            <hr>
-
-        </section>
-
-        <section class="blank items">
-            <div class="item">
-                <img src="http://lorempixel.com/400/300/" alt="Image">
-
-                <div class="item-info">
-                    <h1>Item title</h1>
-                    <p>What the hell is this? Get out of town, I didn't know you did anything creative. Ah, let me read some.</p>
-                    <span class="price">£49.99</span>
-                    <a href="#" class="button button-buy">Get it now</a>
-                </div>
-            </div>
-            <div>
-                <a href="#" class="button button-buy">Buy button (full width for columns)</a>
-            </div>
-        </section>
-    </div>
+        
 </body>
 </html>

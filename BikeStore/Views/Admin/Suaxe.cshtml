@@ -1,0 +1,219 @@
+﻿@model BikeStore.XEGANMAY
+
+@{
+    ViewBag.Title = "Suaxe";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ĐIỀU CHỈNH THÔNG TIN XE</h2>
+
+@using (Html.BeginForm("Suaxe", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.MaXe, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div style="font:18px; padding:5px 0 0 5px">@Model.MaXe</div>
+            @Html.HiddenFor(model => model.MaXe)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TenXe, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TenXe, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TenXe, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Giaban, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Giaban, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Giaban, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Mota, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <textarea name="Mota">@Model.Mota</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Anhbia, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            Chọn ảnh mới
+            <input type="file" name="fileupload" />
+            <img src="@Url.Content("~/images/"+ Model.Anhbia)" width=" 120px" />(Ảnh hiện tại)
+            @ViewBag.Thongbao
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Ngaycapnhat, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Ngaycapnhat, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Ngaycapnhat, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Soluongton, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Soluongton, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Soluongton, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MaLX, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("MaLX")
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MaNPP, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("MaNPP")
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Trở về", "Index")
+</div>
+
+<style>
+    /* Căn chỉnh toàn bộ form */
+    .form-horizontal {
+        max-width: 800px; /* Giới hạn chiều rộng form */
+        margin: 20px auto; /* Căn giữa form */
+        background: #f9f9f9; /* Màu nền nhạt */
+        padding: 20px;
+        border: 1px solid #ddd; /* Đường viền nhẹ */
+        border-radius: 8px; /* Bo góc */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    }
+
+    /* Tiêu đề chính */
+    h2 {
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        color: #5bc0de; /* Màu xanh nhạt */
+        margin-bottom: 20px;
+    }
+
+    /* Đường kẻ ngang */
+    hr {
+        border: 0;
+        height: 1px;
+        background: #ddd;
+        margin: 20px 0;
+    }
+
+    /* Căn chỉnh nhãn (label) */
+    .form-group label {
+        font-weight: bold;
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 5px;
+    }
+
+    /* Các trường nhập liệu */
+    .form-control {
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+        box-sizing: border-box;
+        transition: border-color 0.3s;
+    }
+
+        /* Hiệu ứng khi trường nhập được focus */
+        .form-control:focus {
+            border-color: #5bc0de;
+            box-shadow: 0 0 5px rgba(91, 192, 222, 0.5);
+        }
+
+    /* Textarea */
+    textarea {
+        width: 100%;
+        height: 100px;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical; /* Cho phép thay đổi kích thước theo chiều dọc */
+    }
+
+    /* Hình ảnh */
+    .form-group img {
+        margin-top: 10px;
+        max-width: 120px;
+        border-radius: 8px; /* Bo góc */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Đổ bóng nhẹ */
+    }
+
+    /* Nút chọn tệp */
+    input[type="file"] {
+        display: block;
+        margin-top: 10px;
+    }
+
+    /* Nút lưu */
+    .btn {
+        background-color: #5cb85c; /* Màu xanh lá */
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+        .btn:hover {
+            background-color: #4cae4c; /* Màu đậm hơn khi hover */
+        }
+
+    /* Nút trở về */
+    .btn-default {
+        background-color: #5bc0de; /* Màu xanh nhạt */
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+        .btn-default:hover {
+            background-color: #31b0d5; /* Màu đậm hơn khi hover */
+        }
+
+    /* Validation message */
+    .text-danger {
+        color: #d9534f; /* Màu đỏ cho lỗi */
+        font-size: 14px;
+        margin-top: 5px;
+    }
+</style>

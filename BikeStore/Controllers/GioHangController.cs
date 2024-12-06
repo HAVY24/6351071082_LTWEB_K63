@@ -61,7 +61,7 @@ namespace BikeStore.Controllers
             var lstGiohang = LayGiohang();
             if (!lstGiohang.Any())
             {
-                return RedirectToAction("Index", "BikeStore");
+                return RedirectToAction("Index", "QuanLyXe");
             }
             ViewBag.TongSoLuong = TongSoLuong();
             ViewBag.TongTien = TongTien();
